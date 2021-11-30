@@ -9,18 +9,20 @@ const setImageForBanner = (index) => {
     switch (index) {
         case 0: 
         case 1:
-            bannerLeft.style = `background-image: url(./assets/image/banner/banner${index + 1}.jfif)`
+            bannerLeft.style = `background-image: url(./assets/image/banner/banner${index + 1}.jfif);`
             break;
         default:
-            bannerLeft.style = `background-image: url(./assets/image/banner/banner${index + 1}.png)`
+            bannerLeft.style = `background-image: url(./assets/image/banner/banner${index + 1}.png);`
     }
 }
 
 // Move dots of banner
 const dots = $$('.stardust-carousel__dot')
 
+const quantityDots = dots.length
+
 const findIndexOfDotActive = () => {
-    for(let i=0; i<dots.length; i++) {
+    for(let i=0; i<quantityDots; i++) {
         if(dots[i].classList.contains('stardust-carousel__dot--active')) {
             return i;
         }
@@ -38,7 +40,7 @@ const addClassDotActive = () => {
 
 const autoSetDotActiveNext = () => {
     removeClassDotActive()
-    if (indexDotActive < dots.length - 1) {
+    if (indexDotActive < quantityDots - 1) {
         indexDotActive += 1;
     }
     else {
@@ -73,20 +75,18 @@ dots.forEach((dot, index) => {
 })
 
 // Click direction
-const btnDirectionRight = $('.btn-banner-direction-right')
+const btnDirectionRightBanner = $('.btn-banner-direction-right')
 
-btnDirectionRight.addEventListener("click", () => {
+btnDirectionRightBanner.addEventListener("click", () => {
     clearInterval(setTimeForDot)
     handleAutoBannerLeft()
     setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 })
 
-const btnDirectionLeft = $('.btn-banner-direction-left')
-
 const setDotActivePrevious = () => {
     removeClassDotActive()
     if (indexDotActive === 0) {
-        indexDotActive += dots.length - 1;
+        indexDotActive += quantityDots - 1;
     }
     else {
         indexDotActive -= 1;
@@ -99,9 +99,54 @@ function handleBannerLeftPrevious() {
     setImageForBanner(indexDotActive)
 }
 
-btnDirectionLeft.addEventListener("click", () => {
+const btnDirectionLeftBanner = $('.btn-banner-direction-left')
+
+btnDirectionLeftBanner.addEventListener("click", () => {
     clearInterval(setTimeForDot)
     handleBannerLeftPrevious()
     setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 })
 
+// Direction menu
+const menuGroups = $$('.body__menu .menu-group')
+
+const quantityMenuGroups = menuGroups.length
+
+menuGroups.forEach((menuGroup, index) => {
+    menuGroup.id = `group-${index}`
+})
+
+const btnMenuRight = $('.btn-menu-direction--right')
+const btnMenuLeft = $('.btn-menu-direction--left')
+
+const numberGroupOverflow = 3;
+
+btnMenuRight.addEventListener("click", () => {
+    for(let i=0; i<numberGroupOverflow; i++) {
+        menuGroups[i].style = 'display: none;'
+    }
+
+    for(let i=quantityMenuGroups-1; i>quantityMenuGroups-numberGroupOverflow; i--) {
+        menuGroups[i].style = 'display: block;'
+    }
+
+    setTimeout(() => {
+        btnMenuRight.style = 'display: none;'
+        btnMenuLeft.style = 'display: block;'
+    }, 1000) 
+})
+
+btnMenuLeft.addEventListener("click", () => {
+    for(let i=0; i<numberGroupOverflow; i++) {
+        menuGroups[i].style = 'display: block;'
+    }
+
+    for(let i=quantityMenuGroups-1; i>quantityMenuGroups-numberGroupOverflow; i--) {
+        menuGroups[i].style = 'display: none;'
+    }
+
+    setTimeout(() => {
+        btnMenuRight.style = 'display: block;'
+        btnMenuLeft.style = 'display: none;'
+    }, 1000)
+})
