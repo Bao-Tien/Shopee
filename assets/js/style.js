@@ -16,7 +16,7 @@ const setImageForBanner = (index) => {
     }
 }
 
-// Move dots of banner
+// Move dots of banner left
 const dots = $$('.stardust-carousel__dot')
 
 const quantityDots = dots.length
@@ -56,7 +56,7 @@ function handleAutoBannerLeft() {
 
 let setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 
-// Click dot
+// Click dot of banner left
 const setDotActive = (index) => {
     removeClassDotActive()
     indexDotActive = index
@@ -74,7 +74,7 @@ dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {handleClickDot(dot, index)} )
 })
 
-// Click direction
+// Click direction of banner left
 const btnDirectionRightBanner = $('.btn-banner-direction-right')
 
 btnDirectionRightBanner.addEventListener("click", () => {
@@ -116,8 +116,8 @@ menuGroups.forEach((menuGroup, index) => {
     menuGroup.id = `group-${index}`
 })
 
-const btnMenuRight = $('.btn-menu-direction--right')
-const btnMenuLeft = $('.btn-menu-direction--left')
+const btnMenuRight = $('.btn-direction--right')
+const btnMenuLeft = $('.btn-direction--left')
 
 const numberGroupOverflow = 3;
 

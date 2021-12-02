@@ -49,3 +49,7 @@ html {
     transition-delay: 0s; */
     text-align: center;
 }
+
+.list {
+    position: relative;
+}

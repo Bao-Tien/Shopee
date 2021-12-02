@@ -529,7 +529,6 @@
 }
 
 .menu-list {
-    position: relative;
     flex-wrap: nowrap;
 }
 
@@ -565,7 +564,7 @@
     width: 90%;
 }
 
-.btn-menu-direction {
+.btn-direction {
     position: absolute;
     top: 50%;
     transform: translate3d(0,-50%, 0);
@@ -577,15 +576,15 @@
     transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1) 0s;
 }
 
-.menu-list:hover i{
+.list:hover i{
     font-size: 3rem;
 }
-.menu-list:hover .btn-menu-direction{
+.list:hover .btn-direction{
     width: 50px;
     height: 50px;
 }
 
-.btn-menu-direction i {
+.btn-direction i {
     color: rgba(0, 0, 0, 0.54);
     font-size: 1.4rem;
     position: absolute;
@@ -594,17 +593,20 @@
     transform: translate3d(-50%, -50%, 0);
 }
 
-.btn-menu-direction--right {
+.btn-direction--right {
     right: 0;
     transform: translate3d(50%,-50%, 0);
 }
 
-.btn-menu-direction--left {
+.btn-direction--left {
     left: 0;
     transform: translate3d(-50%,-50%, 0);
 }
 
 /* begin Flash sale */
+.body__flash-sale {
+
+}
 .logo-flash-sale {
     height: 30px;
     width: 130px;
@@ -612,6 +614,87 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.flash-sale-list {
+    display: flex;
+    flex: 1;
+    flex-wrap: nowrap;
+}
+
+.flash-sale-item {
+    min-width: 200px;
+    height: 240px;
+}
+
+.flash-sale-item__image {
+    margin: 5px 13.5px;
+    position: relative;
+}
+
+.flash-sale-item__image .main-image {
+    max-width: 173px;
+    max-height: 173px;
+}
+
+.flash-sale-item__image .footer-banner {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.flash-sale-item__cost {
+    min-width: 170px;
+    line-height: 2.6rem;
+    font-size: 2.17rem;
+    text-align: center;
+    color: #ee4d2d;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flash-sale-item__denominations {
+    margin-right: 5px;
+    height: 16px;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    text-decoration: underline;
+}
+
+.flash-sale-item__saled {
+    margin: 0 15px 15px;
+    padding: 0 7px;
+    height: 16px;
+    background: url(../image/flashSale/backgroundSaled.png) 0 100% no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+.flash-sale-item__saled span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white-color);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    z-index: 2;
+}
+
+.flash-sale-item__saled .ratioExtant {
+    height: 100%;
+    background-color: #ffbda6;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 .test {
     width: 100%;
     height: 1000px;
