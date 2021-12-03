@@ -107,82 +107,88 @@ btnDirectionLeftBanner.addEventListener("click", () => {
     setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 })
 
+//Direction List
+const widthOfListContainer = $('.list-container').offsetWidth
+
+const lengthToScrollOneTime = (elementContainer, elementItem) => {
+    const widthOfItem = elementItem.offsetWidth
+    const numberItemsIsRented =  Math.floor(widthOfListContainer / widthOfItem)
+    const numberItemOfList = elementContainer.childElementCount
+    const lengthOneTimeScroll = (numberItemOfList % numberItemsIsRented === 0
+                                ? numberItemsIsRented 
+                                : numberItemOfList % numberItemsIsRented
+                            ) * widthOfItem
+    return lengthOneTimeScroll
+}
+
+const widthOfScrollBar = (elementContainer, elementItem) => {
+    const widthOfItem = elementItem.offsetWidth
+    const numberItemsIsRented =  Math.floor(widthOfListContainer / widthOfItem)
+    const numberItemOfList = elementContainer.childElementCount
+    const numberBlockOfList = Math.floor(numberItemOfList / numberItemsIsRented)
+    const width = (numberBlockOfList - 1) * widthOfListContainer
+    return width
+}
+
+function handleClickBtnRightOfList(elementContainer, lengthToScrollOneTime, widthOfScrollBar, btnLeft, btnRight) {
+    elementContainer.scrollLeft += lengthToScrollOneTime
+
+    if (elementContainer.scrollLeft >= 0) {
+        setTimeout(() => {
+            btnLeft.style = "display: block"
+            btnRight.style = "display: block"
+        }, 500)
+    }
+    if (elementContainer.scrollLeft >= widthOfScrollBar - lengthToScrollOneTime) {
+        setTimeout(() => {
+            btnRight.style = "display: none"
+        }, 500)
+    }
+}
+
+function handleClickBtnLeftOfList(elementContainer, lengthToScrollOneTime, btnLeft, btnRight) {
+    elementContainer.scrollLeft -= lengthToScrollOneTime
+
+    if (elementContainer.scrollLeft >= 0) {
+        setTimeout(() => {
+            btnLeft.style = "display: block"
+            btnRight.style = "display: block"
+        }, 500)
+    }
+    if (elementContainer.scrollLeft <= lengthToScrollOneTime) {
+        setTimeout(() => {
+            btnLeft.style = "display: none"
+        }, 500)
+    }
+}
 //Direction menu list
 const btnMenuLeft = $('.btn-left__menu')
 const btnMenuRight = $('.btn-right__menu')
-
-const widthOfMenuItem = $('.menu-group').offsetWidth
-const widthOfListContainer = $('.list-container').offsetWidth
-
-const numberItemOfMenuList = $('.menu-list').childElementCount
-
-const widthOverflowOfMenuList = (numberItemOfMenuList - Math.floor(widthOfListContainer/widthOfMenuItem)) * widthOfMenuItem
+const menuList = $('.menu-list')
+const menuGroup = $('.menu-group')
+const lengthToScrollOfMenuList = lengthToScrollOneTime(menuList, menuGroup)
+const widthOfScrollBarOfMenuList = widthOfScrollBar(menuList, menuGroup)
 
 btnMenuRight.addEventListener("click", () => {
-    $('.menu-list').scrollLeft = widthOverflowOfMenuList
-
-    setTimeout(() => {
-        btnMenuRight.style = "display: none"
-        btnMenuLeft.style = "display: block"
-    }, 500)
+    handleClickBtnRightOfList(menuList, lengthToScrollOfMenuList, widthOfScrollBarOfMenuList, btnMenuLeft, btnMenuRight)
 })
 
 btnMenuLeft.addEventListener("click", () => {
-    $('.menu-list').scrollLeft = -widthOverflowOfMenuList
-
-    setTimeout(() => {
-        btnMenuRight.style = "display: block"
-        btnMenuLeft.style = "display: none"
-    }, 500)
+    handleClickBtnLeftOfList(menuList, lengthToScrollOfMenuList, btnMenuLeft, btnMenuRight)
 })
 
 //Direction flash sale list
 const btnFlashSaleLeft = $('.btn-left__flash-sale')
 const btnFlashSaleRight = $('.btn-right__flash-sale')
 const flashSaleList = $('.flash-sale-list')
-
-const widthOfFlashSaleItem = $('.flash-sale-item').offsetWidth
-
-const numberItemOfFlashSaleList = flashSaleList.childElementCount
-
-const numberItemRenderOfFlashSaleList = Math.floor(widthOfListContainer/widthOfFlashSaleItem)
-
-const lengthToScrollOfFlashSaleList = (numberItemOfFlashSaleList % numberItemRenderOfFlashSaleList === 0
-                                        ? numberItemRenderOfFlashSaleList 
-                                        : numberItemOfFlashSaleList % numberItemRenderOfFlashSaleList
-                                    ) * widthOfFlashSaleItem
-
-const numberBlockOfFlashSaleList = numberItemOfFlashSaleList / numberItemRenderOfFlashSaleList
-const widthOfScrollBar = (numberBlockOfFlashSaleList -1) * widthOfListContainer
+const flashSaleItem = $('.flash-sale-item')
+const lengthToScrollOfFlashSaleList = lengthToScrollOneTime(flashSaleList, flashSaleItem)
+const widthOfScrollBarOfFlashSaleList = widthOfScrollBar(flashSaleList, flashSaleItem)
 
 btnFlashSaleRight.addEventListener("click", () => {
-    flashSaleList.scrollLeft += lengthToScrollOfFlashSaleList
-
-    if (flashSaleList.scrollLeft >= 0) {
-        setTimeout(() => {
-            btnFlashSaleLeft.style = "display: block"
-            btnFlashSaleRight.style = "display: block"
-        }, 500)
-    }
-    if (flashSaleList.scrollLeft >= widthOfScrollBar - lengthToScrollOfFlashSaleList) {
-        setTimeout(() => {
-            btnFlashSaleRight.style = "display: none"
-        }, 500)
-    }
+    handleClickBtnRightOfList(flashSaleList, lengthToScrollOfFlashSaleList, widthOfScrollBarOfFlashSaleList, btnFlashSaleLeft, btnFlashSaleRight)
 })
 
 btnFlashSaleLeft.addEventListener("click", () => {
-    flashSaleList.scrollLeft -= lengthToScrollOfFlashSaleList
-
-    if (flashSaleList.scrollLeft >= 0) {
-        setTimeout(() => {
-            btnFlashSaleLeft.style = "display: block"
-            btnFlashSaleRight.style = "display: block"
-        }, 500)
-    }
-    if (flashSaleList.scrollLeft <= lengthToScrollOfFlashSaleList) {
-        setTimeout(() => {
-            btnFlashSaleLeft.style = "display: none"
-        }, 500)
-    }
+    handleClickBtnLeftOfList(flashSaleList, lengthToScrollOfFlashSaleList, btnFlashSaleLeft, btnFlashSaleRight)
 })
