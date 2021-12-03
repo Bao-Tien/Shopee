@@ -108,18 +108,18 @@ btnDirectionLeftBanner.addEventListener("click", () => {
 })
 
 //Direction menu list
-
 const btnMenuLeft = $('.btn-left__menu')
 const btnMenuRight = $('.btn-right__menu')
 
 const widthOfMenuItem = $('.menu-group').offsetWidth
+const widthOfListContainer = $('.list-container').offsetWidth
 
-const widthOverflow = (numberMenuGroup) => {
-    return numberMenuGroup * widthOfMenuItem
-}
+const numberItemOfMenuList = $('.menu-list').childElementCount
+
+const widthOverflowOfMenuList = (numberItemOfMenuList - Math.floor(widthOfListContainer/widthOfMenuItem)) * widthOfMenuItem
 
 btnMenuRight.addEventListener("click", () => {
-    $('.menu-list').scrollLeft = widthOverflow(3)
+    $('.menu-list').scrollLeft = widthOverflowOfMenuList
 
     setTimeout(() => {
         btnMenuRight.style = "display: none"
@@ -128,10 +128,61 @@ btnMenuRight.addEventListener("click", () => {
 })
 
 btnMenuLeft.addEventListener("click", () => {
-    $('.menu-list').scrollLeft = -widthOverflow(3)
+    $('.menu-list').scrollLeft = -widthOverflowOfMenuList
 
     setTimeout(() => {
         btnMenuRight.style = "display: block"
         btnMenuLeft.style = "display: none"
     }, 500)
+})
+
+//Direction flash sale list
+const btnFlashSaleLeft = $('.btn-left__flash-sale')
+const btnFlashSaleRight = $('.btn-right__flash-sale')
+const flashSaleList = $('.flash-sale-list')
+
+const widthOfFlashSaleItem = $('.flash-sale-item').offsetWidth
+
+const numberItemOfFlashSaleList = flashSaleList.childElementCount
+
+const numberItemRenderOfFlashSaleList = Math.floor(widthOfListContainer/widthOfFlashSaleItem)
+
+const lengthToScrollOfFlashSaleList = (numberItemOfFlashSaleList % numberItemRenderOfFlashSaleList === 0
+                                        ? numberItemRenderOfFlashSaleList 
+                                        : numberItemOfFlashSaleList % numberItemRenderOfFlashSaleList
+                                    ) * widthOfFlashSaleItem
+
+const numberBlockOfFlashSaleList = numberItemOfFlashSaleList / numberItemRenderOfFlashSaleList
+const widthOfScrollBar = (numberBlockOfFlashSaleList -1) * widthOfListContainer
+
+btnFlashSaleRight.addEventListener("click", () => {
+    flashSaleList.scrollLeft += lengthToScrollOfFlashSaleList
+
+    if (flashSaleList.scrollLeft >= 0) {
+        setTimeout(() => {
+            btnFlashSaleLeft.style = "display: block"
+            btnFlashSaleRight.style = "display: block"
+        }, 500)
+    }
+    if (flashSaleList.scrollLeft >= widthOfScrollBar - lengthToScrollOfFlashSaleList) {
+        setTimeout(() => {
+            btnFlashSaleRight.style = "display: none"
+        }, 500)
+    }
+})
+
+btnFlashSaleLeft.addEventListener("click", () => {
+    flashSaleList.scrollLeft -= lengthToScrollOfFlashSaleList
+
+    if (flashSaleList.scrollLeft >= 0) {
+        setTimeout(() => {
+            btnFlashSaleLeft.style = "display: block"
+            btnFlashSaleRight.style = "display: block"
+        }, 500)
+    }
+    if (flashSaleList.scrollLeft <= lengthToScrollOfFlashSaleList) {
+        setTimeout(() => {
+            btnFlashSaleLeft.style = "display: none"
+        }, 500)
+    }
 })
