@@ -107,46 +107,31 @@ btnDirectionLeftBanner.addEventListener("click", () => {
     setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 })
 
-// Direction menu
-const menuGroups = $$('.body__menu .menu-group')
+//Direction menu list
 
-const quantityMenuGroups = menuGroups.length
+const btnMenuLeft = $('.btn-left-menu')
+const btnMenuRight = $('.btn-right-menu')
 
-menuGroups.forEach((menuGroup, index) => {
-    menuGroup.id = `group-${index}`
-})
+const widthOfMenuItem = $('.menu-group').offsetWidth
 
-const btnMenuRight = $('.btn-direction--right')
-const btnMenuLeft = $('.btn-direction--left')
-
-const numberGroupOverflow = 3;
+const widthOverflow = (numberMenuGroup) => {
+    return numberMenuGroup * widthOfMenuItem
+}
 
 btnMenuRight.addEventListener("click", () => {
-    for(let i=0; i<numberGroupOverflow; i++) {
-        menuGroups[i].style = 'display: none;'
-    }
-
-    for(let i=quantityMenuGroups-1; i>quantityMenuGroups-numberGroupOverflow; i--) {
-        menuGroups[i].style = 'display: block;'
-    }
+    $('.menu-list').scrollLeft = widthOverflow(3)
 
     setTimeout(() => {
-        btnMenuRight.style = 'display: none;'
-        btnMenuLeft.style = 'display: block;'
-    }, 1000) 
+        btnMenuRight.style = "display: none"
+        btnMenuLeft.style = "display: block"
+    }, 500)
 })
 
 btnMenuLeft.addEventListener("click", () => {
-    for(let i=0; i<numberGroupOverflow; i++) {
-        menuGroups[i].style = 'display: block;'
-    }
-
-    for(let i=quantityMenuGroups-1; i>quantityMenuGroups-numberGroupOverflow; i--) {
-        menuGroups[i].style = 'display: none;'
-    }
+    $('.menu-list').scrollLeft = -widthOverflow(3)
 
     setTimeout(() => {
-        btnMenuRight.style = 'display: block;'
-        btnMenuLeft.style = 'display: none;'
-    }, 1000)
+        btnMenuRight.style = "display: block"
+        btnMenuLeft.style = "display: none"
+    }, 500)
 })

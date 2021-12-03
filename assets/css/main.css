@@ -529,7 +529,10 @@
 }
 
 .menu-list {
+    overflow-x: scroll;
     flex-wrap: nowrap;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .menu-group {
@@ -558,10 +561,9 @@
 
 .menu-item p {
     height: 4rem;
-    margin: 0 0 1rem 0;
-    text-align: center;
+    margin: 0 0.5rem 1rem;
+    padding: 0;
     line-height: 2rem;
-    width: 90%;
 }
 
 .btn-direction {
