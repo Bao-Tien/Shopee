@@ -528,15 +528,16 @@
     font-weight: 500;
 }
 
-.menu-list {
+/* .menu-list {
     overflow-x: scroll;
     flex-wrap: nowrap;
     scroll-behavior: smooth;
     overflow-x: hidden;
-}
+    flex: 1;
+} */
 
 .menu-group {
-    flex: 1;
+    
 }
 
 .menu-list .menu-item {
@@ -566,45 +567,6 @@
     line-height: 2rem;
 }
 
-.btn-direction {
-    position: absolute;
-    top: 50%;
-    transform: translate3d(0,-50%, 0);
-    width: 25px;
-    height: 25px;
-    background-color: var(--white-color);
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 12px 0px;
-    transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1) 0s;
-}
-
-.list:hover i{
-    font-size: 3rem;
-}
-.list:hover .btn-direction{
-    width: 50px;
-    height: 50px;
-}
-
-.btn-direction i {
-    color: rgba(0, 0, 0, 0.54);
-    font-size: 1.4rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-}
-
-.btn-direction--right {
-    right: 0;
-    transform: translate3d(50%,-50%, 0);
-}
-
-.btn-direction--left {
-    left: 0;
-    transform: translate3d(-50%,-50%, 0);
-}
-
 /* begin Flash sale */
 .body__flash-sale {
 
@@ -617,11 +579,13 @@
     background-repeat: no-repeat;
 }
 
-.flash-sale-list {
-    display: flex;
+/* .flash-sale-list {
     flex: 1;
+    overflow-x: scroll;
     flex-wrap: nowrap;
-}
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+} */
 
 .flash-sale-item {
     min-width: 200px;

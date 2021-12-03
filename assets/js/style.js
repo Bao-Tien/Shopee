@@ -109,8 +109,8 @@ btnDirectionLeftBanner.addEventListener("click", () => {
 
 //Direction menu list
 
-const btnMenuLeft = $('.btn-left-menu')
-const btnMenuRight = $('.btn-right-menu')
+const btnMenuLeft = $('.btn-left__menu')
+const btnMenuRight = $('.btn-right__menu')
 
 const widthOfMenuItem = $('.menu-group').offsetWidth
 
