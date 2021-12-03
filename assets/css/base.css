@@ -41,6 +41,19 @@ html {
     flex-direction: column;
 }
 
+.body-item--header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.body-item {
+    background-color: var(--white-color);
+    width: 100%;
+    margin-top: 20px;
+}
+
 .item {
     transition: opacity .2s ease;
     /* transition-property: opacity;

@@ -1,15 +1,4 @@
-.body-item--header {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    margin-top: 20px;
-    border-bottom: 1px solid rgba(0,0,0,.05);
-}
-.body-item {
-    background-color: var(--white-color);
-    width: 100%;
-}
+
 /* begin Header */
 .header-with-search .logo:hover ,
 .cart:hover,
@@ -528,14 +517,6 @@
     font-weight: 500;
 }
 
-/* .menu-list {
-    overflow-x: scroll;
-    flex-wrap: nowrap;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    flex: 1;
-} */
-
 .menu-group {
     
 }
@@ -659,6 +640,19 @@
     right: 0;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+}
+/* end Flash sale */
+
+/* begin Skinny banner */
+.body__skinny-banner {
+}
+.skinny-banner-list {
+    flex-wrap: nowrap;
+    flex: 1;
+}
+.skinny-banner-item {
+    width: 400px;
+    height: 110px;
 }
 
 .test {
