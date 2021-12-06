@@ -1,29 +1,43 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
-// Slider in banner left -> Click dot -> Click direction
+// Render dots in slider
+const bannerLeftDots = $('.banner-left-dots')
 
-const bannerLeft = $('.banner-left')
+const countSliderInBannerLeft = $('.banner-left-list-image').childElementCount
+for(let i=0; i<countSliderInBannerLeft; i++) {
+    let div = document.createElement('div');
+    div.classList.add('slider-dot');
+    bannerLeftDots.appendChild(div)
+}
+bannerLeftDots.firstElementChild.classList.add('slider-dot--active')
 
-const setImageForBanner = (index) => {
-    switch (index) {
-        case 0: 
-        case 1:
-            bannerLeft.style = `background-image: url(./assets/image/banner/banner${index + 1}.jfif);`
-            break;
-        default:
-            bannerLeft.style = `background-image: url(./assets/image/banner/banner${index + 1}.png);`
-    }
+// Set image in slider
+const bannerLeftListImage = $('.banner-left-list-image')
+
+const lengthToScrollOfBannerLeft = $('.banner-left').offsetWidth
+
+const widthOfScrollBarOfBannerLeft = (countSliderInBannerLeft - 1) * lengthToScrollOfBannerLeft
+
+function setImageInSlider() {
+    indexDotActive === countSliderInBannerLeft - 1
+    ? bannerLeftListImage.scrollLeft += lengthToScrollOfBannerLeft
+    : bannerLeftListImage.scrollLeft = lengthToScrollOfBannerLeft*indexDotActive
 }
 
-// Move dots of banner left
-const dots = $$('.stardust-carousel__dot')
+function setImageInSliderPrevious() {
+    indexDotActive === countSliderInBannerLeft -1
+    ? bannerLeftListImage.scrollLeft = widthOfScrollBarOfBannerLeft
+    : bannerLeftListImage.scrollLeft -= lengthToScrollOfBannerLeft
+}
 
-const quantityDots = dots.length
+// Move dots in slider
+const dots = $$('.slider-dot')
+const quantityDots = countSliderInBannerLeft
 
 const findIndexOfDotActive = () => {
     for(let i=0; i<quantityDots; i++) {
-        if(dots[i].classList.contains('stardust-carousel__dot--active')) {
+        if(dots[i].classList.contains('slider-dot--active')) {
             return i;
         }
     }
@@ -31,11 +45,11 @@ const findIndexOfDotActive = () => {
 let indexDotActive = findIndexOfDotActive();
 
 const removeClassDotActive = () => {
-    dots[indexDotActive].classList.remove('stardust-carousel__dot--active')
+    dots[indexDotActive].classList.remove('slider-dot--active')
 }
 
 const addClassDotActive = () => {
-    dots[indexDotActive].classList.add('stardust-carousel__dot--active')
+    dots[indexDotActive].classList.add('slider-dot--active')
 }
 
 const autoSetDotActiveNext = () => {
@@ -51,12 +65,12 @@ const autoSetDotActiveNext = () => {
 
 function handleAutoBannerLeft() {
     autoSetDotActiveNext()
-    setImageForBanner(indexDotActive)
+    setImageInSlider()
 }
 
 let setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 
-// Click dot of banner left
+// Click dot of slider
 const setDotActive = (index) => {
     removeClassDotActive()
     indexDotActive = index
@@ -66,7 +80,7 @@ const setDotActive = (index) => {
 function handleClickDot(dot, index) {
     clearInterval(setTimeForDot)
     setDotActive(index)
-    setImageForBanner(index)
+    setImageInSlider()
     setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 }
 
@@ -74,13 +88,14 @@ dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {handleClickDot(dot, index)} )
 })
 
-// Click direction of banner left
+// Click direction in slider
 const btnDirectionRightBanner = $('.btn-banner-direction-right')
 
 btnDirectionRightBanner.addEventListener("click", () => {
     clearInterval(setTimeForDot)
     handleAutoBannerLeft()
     setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
+    setImageInSlider()
 })
 
 const setDotActivePrevious = () => {
@@ -96,7 +111,7 @@ const setDotActivePrevious = () => {
 
 function handleBannerLeftPrevious() {
     setDotActivePrevious()
-    setImageForBanner(indexDotActive)
+    setImageInSliderPrevious()
 }
 
 const btnDirectionLeftBanner = $('.btn-banner-direction-left')
@@ -107,12 +122,14 @@ btnDirectionLeftBanner.addEventListener("click", () => {
     setTimeForDot = setInterval(handleAutoBannerLeft, 5000)
 })
 
+
+
 //Direction List
-const widthOfListContainer = $('.list-container').offsetWidth
+const widthOfGrid = $('.grid').offsetWidth
 
 const lengthToScrollOneTime = (elementContainer, elementItem) => {
     const widthOfItem = elementItem.offsetWidth
-    const numberItemsIsRented =  Math.floor(widthOfListContainer / widthOfItem)
+    const numberItemsIsRented =  Math.floor(widthOfGrid / widthOfItem)
     const numberItemOfList = elementContainer.childElementCount
     const lengthOneTimeScroll = (numberItemOfList % numberItemsIsRented === 0
                                 ? numberItemsIsRented 
@@ -123,10 +140,10 @@ const lengthToScrollOneTime = (elementContainer, elementItem) => {
 
 const widthOfScrollBar = (elementContainer, elementItem) => {
     const widthOfItem = elementItem.offsetWidth
-    const numberItemsIsRented =  Math.floor(widthOfListContainer / widthOfItem)
+    const numberItemsIsRented =  Math.floor(widthOfGrid / widthOfItem)
     const numberItemOfList = elementContainer.childElementCount
     const numberBlockOfList = Math.floor(numberItemOfList / numberItemsIsRented)
-    const width = (numberBlockOfList - 1) * widthOfListContainer
+    const width = (numberBlockOfList - 1) * widthOfGrid
     return width
 }
 
