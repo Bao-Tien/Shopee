@@ -511,10 +511,8 @@
 /* begin Menu */
 
 
-.body__menu .menu-header {
-    font-size: 1.5rem;
+.body__menu .menu-title {
     color: rgba(0,0,0,.54);
-    font-weight: 500;
 }
 
 .menu-group {
@@ -620,7 +618,7 @@
     text-align: center;
     position: relative;
 }
-.flash-sale-item__saled span {
+.flash-sale-item__saled .saled {
     position: absolute;
     top: 0;
     left: 50%;
@@ -641,6 +639,16 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
+
+.flash-sale-item__saled .sold-out {
+    background: url(../image/flashSale/sold-out.png) 0 no-repeat;
+    width: 18px;
+    height: 21px;
+    background-size: contain;
+    position: absolute;
+    left: 3px;
+    top: -7px;
+}
 /* end Flash sale */
 
 /* begin Skinny banner */
@@ -649,6 +657,7 @@
 .skinny-banner-list {
     flex-wrap: nowrap;
     flex: 1;
+    cursor: pointer;
 }
 .skinny-banner-item {
     width: 400px;
@@ -660,6 +669,12 @@
     height: 1000px;
     background-color: turquoise;
 }
+
+/* begin Mall */
+.mall-title {
+    color: #d0011b;
+}
+
 /* Footer */
 footer {
     border-top: 4px solid #ee4d2d;

@@ -192,3 +192,26 @@ btnFlashSaleRight.addEventListener("click", () => {
 btnFlashSaleLeft.addEventListener("click", () => {
     handleClickBtnLeftOfList(flashSaleList, lengthToScrollOfFlashSaleList, btnFlashSaleLeft, btnFlashSaleRight)
 })
+
+//Sold out for Flash Sale Item
+
+const flashSaleItemsSaled = $$('.flash-sale-item__saled')
+let ratioExtant
+let widthRatioExtant
+let saled
+
+flashSaleItemsSaled.forEach((itemSaled, index) => {
+    saled = itemSaled.children[0]
+    ratioExtant = itemSaled.children[1]
+    widthRatioExtant = ratioExtant.style.width
+    widthRatioExtant = parseInt(widthRatioExtant, 10)
+
+    if (widthRatioExtant <= 10 ) {
+        saled.innerText = 'Cháy hàng'
+        let div = document.createElement('div');
+        div.classList.add('sold-out');
+        itemSaled.appendChild(div)
+    }
+})
+
+
