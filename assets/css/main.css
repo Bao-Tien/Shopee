@@ -367,7 +367,6 @@
 /* begin Banner */
 .body__banner {
     background-color: var(--white-color);
-    /* border-bottom: solid 1px #222; */
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
 }
 .banner_container {
@@ -378,7 +377,7 @@
 
 .banner_list {
     margin: 30px 0;
-    height: 235px;
+    /* height: 235px; */
     display: flex;
     overflow: hidden;
 }
@@ -388,10 +387,11 @@
 }
 .banner-left-list-image {
 }
-.banner-left-image {
+.slider-image {
     width: 100%;
+    height: 100%;
+    object-fit: contain
 }
-
 
 .banner-right {
     flex: 1;
@@ -481,14 +481,6 @@
     background-repeat: no-repeat;
 }
 
-/* .flash-sale-list {
-    flex: 1;
-    overflow-x: scroll;
-    flex-wrap: nowrap;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-} */
-
 .flash-sale-item {
     min-width: 200px;
     height: 240px;
@@ -551,6 +543,7 @@
     font-size: 1.2rem;
     line-height: 1.8rem;
     z-index: 2;
+    white-space: nowrap;
 }
 
 .flash-sale-item__saled .ratioExtant {
@@ -598,13 +591,45 @@
     color: var(--red-color);
 }
 
-.mall-container {
+.mall-slider {
+    margin: 10px 0 0 10px;
+    width: 390px;
+    height: 440px;
+}
+
+.mall-content {
     display: flex;
 }
-.mall-slider {
-    width: 390px;
-    height: 464px;
+
+.mall-menu {
+    width: 800px;
+}
+
+.mall-item {
     margin: 10px;
+    position: relative;
+}
+.mall-item img {
+    width: 180px;
+    height: 216px;
+}
+
+.mall-item p {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    line-height: 27px;
+    font-size: 18px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: var(--red-color);
+    margin: 0;
+}
+
+.last-item-mall {
+    position: relative;
+    width: 180px;
+    height: 216px;
 }
 
 /* Footer */

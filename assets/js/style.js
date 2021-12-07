@@ -125,11 +125,11 @@ btnDirectionLeftBanner.addEventListener("click", () => {
 
 
 //Direction List
-const widthOfGrid = $('.grid').offsetWidth
 
 const lengthToScrollOneTime = (elementContainer, elementItem) => {
+    const widthContainer = elementContainer.offsetWidth
     const widthOfItem = elementItem.offsetWidth
-    const numberItemsIsRented =  Math.floor(widthOfGrid / widthOfItem)
+    const numberItemsIsRented =  Math.floor(widthContainer / widthOfItem)
     const numberItemOfList = elementContainer.childElementCount
     const lengthOneTimeScroll = (numberItemOfList % numberItemsIsRented === 0
                                 ? numberItemsIsRented 
@@ -139,11 +139,12 @@ const lengthToScrollOneTime = (elementContainer, elementItem) => {
 }
 
 const widthOfScrollBar = (elementContainer, elementItem) => {
+    const widthContainer = elementContainer.offsetWidth
     const widthOfItem = elementItem.offsetWidth
-    const numberItemsIsRented =  Math.floor(widthOfGrid / widthOfItem)
+    const numberItemsIsRented =  Math.floor(widthContainer / widthOfItem)
     const numberItemOfList = elementContainer.childElementCount
     const numberBlockOfList = Math.floor(numberItemOfList / numberItemsIsRented)
-    const width = (numberBlockOfList - 1) * widthOfGrid
+    const width = (numberBlockOfList - 1) * widthContainer
     return width
 }
 
@@ -178,6 +179,7 @@ function handleClickBtnLeftOfList(elementContainer, lengthToScrollOneTime, btnLe
         }, 500)
     }
 }
+
 //Direction menu list
 const btnMenuLeft = $('.btn-left__menu')
 const btnMenuRight = $('.btn-right__menu')
@@ -224,11 +226,32 @@ flashSaleItemsSaled.forEach((itemSaled, index) => {
     widthRatioExtant = parseInt(widthRatioExtant, 10)
 
     if (widthRatioExtant <= 10 ) {
-        saled.innerText = 'Cháy hàng'
+        saled.innerText = 'Sắp cháy hàng'
         let div = document.createElement('div');
         div.classList.add('sold-out');
         itemSaled.appendChild(div)
     }
+    else if (widthRatioExtant < 50 ) {
+        let div = document.createElement('div');
+        div.classList.add('sold-out');
+        itemSaled.appendChild(div)
+    }
+})
+
+//Direction Mall menu
+const btnMallLeft = $('.btn-left__mall')
+const btnMallRight = $('.btn-right__mall')
+const mallList = $('.mall-list')
+const mallGroup = $('.mall-group')
+const lengthToScrollOfMallList = lengthToScrollOneTime(mallList, mallGroup)
+const widthOfScrollBarOfMallList = widthOfScrollBar(mallList, mallGroup)
+
+btnMallRight.addEventListener("click", () => {
+    handleClickBtnRightOfList(mallList, lengthToScrollOfMallList, widthOfScrollBarOfMallList, btnMallLeft, btnMallRight)
+})
+
+btnMallLeft.addEventListener("click", () => {
+    handleClickBtnLeftOfList(mallList, lengthToScrollOfMallList, btnMallLeft, btnMallRight)
 })
 
 

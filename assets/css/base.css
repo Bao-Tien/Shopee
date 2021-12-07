@@ -137,10 +137,10 @@ html {
     border-bottom-left-radius: 2px;
 }
 .btn-slider-right i {
-    margin: 17px 8px 17px 9px;
+    margin: 20px 10px 20px 10px;
 }
 .btn-slider-left i {
-    margin: 17px 9px 17px 8px;
+    margin: 20px 10px 20px 10px;
 }
 
 .slider .slider-dots {
@@ -209,7 +209,7 @@ html {
 
 .list-content {
     flex: 1;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     flex-wrap: nowrap;
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -247,3 +247,10 @@ html {
     transform: translate3d(-50%,-50%, 0);
 }
 
+.last-item-see-all {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    white-space: nowrap;
+}
