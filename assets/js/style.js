@@ -260,5 +260,29 @@ const mallSlider_classNameDot = 'mall-dot'
 
 handleSilder(mallSlider_Dots, mallSlider_Sliders, mallSlider_classNameDot, $('.btn-mall-right'), $('.btn-mall-left'))
 
+// Suggestion nav bar
+const setStyleForUnderline = () => {
+    suggestionNavActive = $('.suggestion-nav-item.suggestion-nav--active')
+    underline.style.left = suggestionNavActive.offsetLeft + 'px'
+    underline.style.width = suggestionNavActive.offsetWidth + 'px'
+}
+
+let suggestionNavActive
+const underline = $('.underline-nav-item')
+setStyleForUnderline()
+
+
+
+const suggestionNavItems = $$('.suggestion-nav-item')
+
+suggestionNavItems.forEach(item => {
+    suggestionNavActive = $('.suggestion-nav-item.suggestion-nav--active')
+    item.onclick = function(){
+        suggestionNavActive.classList.remove('suggestion-nav--active')
+        item.classList.add('suggestion-nav--active')
+        setStyleForUnderline()
+    }
+})
+
 
 
