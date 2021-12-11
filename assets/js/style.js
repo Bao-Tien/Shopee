@@ -260,28 +260,51 @@ const mallSlider_classNameDot = 'mall-dot'
 
 handleSilder(mallSlider_Dots, mallSlider_Sliders, mallSlider_classNameDot, $('.btn-mall-right'), $('.btn-mall-left'))
 
-// Suggestion nav bar
+// Suggestion nav bar // Render content of nav bar active
 const setStyleForUnderline = () => {
     suggestionNavActive = $('.suggestion-nav-item.suggestion-nav--active')
     underline.style.left = suggestionNavActive.offsetLeft + 'px'
     underline.style.width = suggestionNavActive.offsetWidth + 'px'
 }
 
+let suggestionContentActive
 let suggestionNavActive
 const underline = $('.underline-nav-item')
 setStyleForUnderline()
 
-
-
 const suggestionNavItems = $$('.suggestion-nav-item')
+const suggestionContentItems = $$('.suggestion-content-item')
 
-suggestionNavItems.forEach(item => {
-    suggestionNavActive = $('.suggestion-nav-item.suggestion-nav--active')
+suggestionNavItems.forEach((item, index) => {
+    
     item.onclick = function(){
+        suggestionNavActive = $('.suggestion-nav-item.suggestion-nav--active')
+        suggestionContentActive = $('.suggestion-content-item.suggestion-content--active')
+
         suggestionNavActive.classList.remove('suggestion-nav--active')
         item.classList.add('suggestion-nav--active')
         setStyleForUnderline()
+        
+        suggestionContentActive.classList.remove('suggestion-content--active')
+        suggestionContentItems[index].classList.add('suggestion-content--active')
     }
+})
+
+
+// Render quantity of product saled
+const quantityProductSaledList = $$('.body__suggestion-today .product-saled')
+quantityProductSaledList.forEach(quantity => {
+    let quantityTypeNumber = parseInt(quantity.innerText)
+    if ( quantityTypeNumber > 0) {
+        if (quantityTypeNumber < 1000) {
+            quantity.innerText = `Đã bán ${quantityTypeNumber}`
+        }
+        else {
+            quantity.innerText = `Đã bán ${quantityTypeNumber/1000}k`
+        }
+
+    }
+    else quantity.innerText = ''
 })
 
 
