@@ -704,6 +704,8 @@
     color: var(--white-color);
     background-color: var(--orange-color);
     border: 1px solid #ee4d2d;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
     display: none;
 }
 
@@ -727,9 +729,6 @@
     height: 98px;
     padding: 10px;
 }
-
-
-
 
 .product-notify {
     height: 49px;
@@ -764,6 +763,29 @@
     font-size: 1.2rem;
     color: rgba(0,0,0,.54);
     margin-left: 5px;
+}
+
+.see-more {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-see-more {
+    margin: 25px 0 60px;
+    width: 390px;
+    height: 40px;
+    box-shadow: 0 .0625rem .125rem 0 rgba(0,0,0,.1);
+    border: 1px solid rgba(0,0,0,.09);
+    color: #555;
+    background-color: var(--white-color);
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 40px;
+}
+
+.btn-see-more:hover {
+    background: rgba(0,0,0,.02);
 }
 
 .test {
