@@ -307,5 +307,27 @@ quantityProductSaledList.forEach(quantity => {
     else quantity.innerText = ''
 })
 
+// Move banner-fixed
+const bannerFixed = $('.banner-fixed')
+const widthScreenInitial = screen.width
+const rightStyleOfBannerInitial = parseInt(window.getComputedStyle(bannerFixed).right)
 
+let widthScreenCurrent
 
+const handleRightBanner = () => {
+    widthScreenCurrent = window.innerWidth
+    if(widthScreenCurrent < widthScreenInitial) {
+        if(widthScreenCurrent > 1700) {
+            bannerFixed.style.right = rightStyleOfBannerInitial - (widthScreenInitial - widthScreenCurrent) + 'px'
+        } 
+        else {
+            bannerFixed.style.right = '40px'
+        }
+    }
+}
+
+handleRightBanner()
+
+window.addEventListener("resize", () => {
+    handleRightBanner()
+})

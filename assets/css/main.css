@@ -14,7 +14,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 3;
 }
 
 .header__navbar {
@@ -368,7 +368,7 @@
 /* begin Banner */
 .background-item-container {
     background-image: url(../image/background_banner/background.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 .banner_container {
@@ -409,7 +409,6 @@
 }
 .category-hot {
     flex: 1;
-    flex-wrap: nowrap;
     background-color: var(--white-color);
     margin-top: 10px;
     height: 108px;
@@ -583,7 +582,6 @@
 .body__skinny-banner {
 }
 .skinny-banner-list {
-    flex-wrap: nowrap;
     flex: 1;
     cursor: pointer;
 }
@@ -815,3 +813,19 @@ footer {
     font-size: 1.2rem;
     padding: 5px 0;
 }
+
+/* Banner fixed */
+.banner-fixed {
+    width: 82px;
+    height: 82px;
+    background-image: url(../image/fixed/fixed.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: fixed;
+    bottom: 150px;
+    right: 240px;
+    z-index: 2;
+}
+
+
+
