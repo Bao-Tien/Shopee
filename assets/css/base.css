@@ -2,6 +2,7 @@
 :root {
     --header-height: 118px;
     --search-btn-witdth: 60px;
+    --border-radius: 2px;
 
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness) */
@@ -82,6 +83,11 @@ img {
 
 button {
     cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+input {
     border: none;
     outline: none;
 }
