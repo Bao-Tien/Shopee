@@ -7,10 +7,10 @@ function handleSilder(elementDots, elementSliders, classNameDot, btnRight, btnLe
     const countSliders = elementSliders.childElementCount
     for(let i=0; i<countSliders; i++) {
         let div = document.createElement('div');
-        div.classList.add('slider-dot', classNameDot);
+        div.classList.add('slider__dot', classNameDot);
         elementDots.appendChild(div)
     }
-    elementDots.firstElementChild.classList.add('slider-dot--active')
+    elementDots.firstElementChild.classList.add('slider__dot--active')
     
     // Set image in slider
     const lengthToScroll = elementSliders.offsetWidth
@@ -34,7 +34,7 @@ function handleSilder(elementDots, elementSliders, classNameDot, btnRight, btnLe
     const dots = $$(`.${classNameDot}`)
     const findIndexOfDotActive = () => {
         for(let i=0; i<countSliders; i++) {
-            if(dots[i].classList.contains('slider-dot--active')) {
+            if(dots[i].classList.contains('slider__dot--active')) {
                 return i;
             }
         }
@@ -42,11 +42,11 @@ function handleSilder(elementDots, elementSliders, classNameDot, btnRight, btnLe
     let indexDotActive = findIndexOfDotActive();
 
     const removeClassDotActive = () => {
-        dots[indexDotActive].classList.remove('slider-dot--active')
+        dots[indexDotActive].classList.remove('slider__dot--active')
     }
 
     const addClassDotActive = () => {
-        dots[indexDotActive].classList.add('slider-dot--active')
+        dots[indexDotActive].classList.add('slider__dot--active')
     }
 
     const autoSetDotActiveNext = () => {
@@ -117,11 +117,11 @@ function handleSilder(elementDots, elementSliders, classNameDot, btnRight, btnLe
 }
 
 // Slider of Banner Left
-const bannerLeft_Dots = $('.banner-left-dots')
-const bannerLeft_Sliders = $('.banner-left-list-image')
+const bannerLeft_Dots = $('.banner__left-dots')
+const bannerLeft_Sliders = $('.banner__left-sliders')
 const bannerLeft_classNameDot = 'banner-left-dot'
 
-handleSilder(bannerLeft_Dots, bannerLeft_Sliders, bannerLeft_classNameDot, $('.btn-banner-direction-right'), $('.btn-banner-direction-left'))
+handleSilder(bannerLeft_Dots, bannerLeft_Sliders, bannerLeft_classNameDot, $('.banner__left-btn--right'), $('.banner__left-btn--left'))
 
 //Direction List
 const lengthToScrollOneTime = (elementContainer, elementItem) => {
