@@ -18,6 +18,8 @@
 
 .nav__item {
     display: inline-block;
+    position: relative;
+
 }
 
 .nav__list-right .nav__item {
@@ -59,9 +61,8 @@
     position: absolute;
     border-left: solid 2px #f96c5c;
     height: 14px;
-    right: -10px;
-    top: 50%; 
-    transform: translateY(-50%);
+    right: -11px;
+    top: 0; 
 }
 
 .separate-size-s::after {
