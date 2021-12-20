@@ -119,7 +119,7 @@ function handleSilder(elementDots, elementSliders, classNameDot, btnRight, btnLe
 // Slider of Banner Left
 const bannerLeft_Dots = $('.banner__left-dots')
 const bannerLeft_Sliders = $('.banner__left-sliders')
-const bannerLeft_classNameDot = 'banner-left-dot'
+const bannerLeft_classNameDot = 'banner__left-dot'
 
 handleSilder(bannerLeft_Dots, bannerLeft_Sliders, bannerLeft_classNameDot, $('.banner__left-btn--right'), $('.banner__left-btn--left'))
 
@@ -179,10 +179,10 @@ function handleClickBtnLeftOfList(elementContainer, lengthToScrollOneTime, btnLe
 }
 
 //Direction menu list
-const btnMenuLeft = $('.btn-left__menu')
-const btnMenuRight = $('.btn-right__menu')
-const menuList = $('.menu-list')
-const menuGroup = $('.menu-group')
+const btnMenuLeft = $('.menu__btn-left')
+const btnMenuRight = $('.menu__btn-right')
+const menuList = $('.menu__list')
+const menuGroup = $('.menu__group')
 const lengthToScrollOfMenuList = lengthToScrollOneTime(menuList, menuGroup)
 const widthOfScrollBarOfMenuList = widthOfScrollBar(menuList, menuGroup)
 
@@ -197,8 +197,8 @@ btnMenuLeft.addEventListener("click", () => {
 //Direction flash sale list
 const btnFlashSaleLeft = $('.btn-left__flash-sale')
 const btnFlashSaleRight = $('.btn-right__flash-sale')
-const flashSaleList = $('.flash-sale-list')
-const flashSaleItem = $('.flash-sale-item')
+const flashSaleList = $('.flash-sale__list')
+const flashSaleItem = $('.flash-sale__item')
 const lengthToScrollOfFlashSaleList = lengthToScrollOneTime(flashSaleList, flashSaleItem)
 const widthOfScrollBarOfFlashSaleList = widthOfScrollBar(flashSaleList, flashSaleItem)
 
@@ -212,7 +212,7 @@ btnFlashSaleLeft.addEventListener("click", () => {
 
 //Sold out for Flash Sale Item
 
-const flashSaleItemsSaled = $$('.flash-sale-item__saled')
+const flashSaleItemsSaled = $$('.flash-sale__saled')
 let ratioExtant
 let widthRatioExtant
 let saled
@@ -237,10 +237,10 @@ flashSaleItemsSaled.forEach((itemSaled, index) => {
 })
 
 //Direction Mall menu
-const btnMallLeft = $('.btn-left__mall')
-const btnMallRight = $('.btn-right__mall')
-const mallList = $('.mall-list')
-const mallGroup = $('.mall-group')
+const btnMallLeft = $('.mall__menu-btn--left')
+const btnMallRight = $('.mall__menu-btn--right')
+const mallList = $('.mall__list')
+const mallGroup = $('.mall__group')
 const lengthToScrollOfMallList = lengthToScrollOneTime(mallList, mallGroup)
 const widthOfScrollBarOfMallList = widthOfScrollBar(mallList, mallGroup)
 
@@ -254,45 +254,45 @@ btnMallLeft.addEventListener("click", () => {
 
 
 // Slider of Mall
-const mallSlider_Dots = $('.mall-slider-dots')
-const mallSlider_Sliders = $('.mall-slider-images')
-const mallSlider_classNameDot = 'mall-dot'
+const mallSlider_Dots = $('.mall__slider-dots')
+const mallSlider_Sliders = $('.mall__slider-imgs')
+const mallSlider_classNameDot = 'mall__slider-dot'
 
-handleSilder(mallSlider_Dots, mallSlider_Sliders, mallSlider_classNameDot, $('.btn-mall-right'), $('.btn-mall-left'))
+handleSilder(mallSlider_Dots, mallSlider_Sliders, mallSlider_classNameDot, $('.mall__slider-btn--right'), $('.mall__slider-btn--left'))
 
 // Suggestion nav bar // Render content of nav bar active
 const setStyleForUnderline = () => {
-    suggestionNavActive = $('.suggestion-nav-item.suggestion-nav--active')
+    suggestionNavActive = $('.suggestion__nav-item.suggestion__nav--active')
     underline.style.left = suggestionNavActive.offsetLeft + 'px'
     underline.style.width = suggestionNavActive.offsetWidth + 'px'
 }
 
 let suggestionContentActive
 let suggestionNavActive
-const underline = $('.underline-nav-item')
+const underline = $('.nav-item__underline')
 setStyleForUnderline()
 
-const suggestionNavItems = $$('.suggestion-nav-item')
-const suggestionContentItems = $$('.suggestion-content-item')
+const suggestionNavItems = $$('.suggestion__nav-item')
+const suggestionContentItems = $$('.suggestion__content-item')
 
 suggestionNavItems.forEach((item, index) => {
     
     item.onclick = function(){
-        suggestionNavActive = $('.suggestion-nav-item.suggestion-nav--active')
-        suggestionContentActive = $('.suggestion-content-item.suggestion-content--active')
+        suggestionNavActive = $('.suggestion__nav-item.suggestion__nav--active')
+        suggestionContentActive = $('.suggestion__content-item.suggestion__content--active')
 
-        suggestionNavActive.classList.remove('suggestion-nav--active')
-        item.classList.add('suggestion-nav--active')
+        suggestionNavActive.classList.remove('suggestion__nav--active')
+        item.classList.add('suggestion__nav--active')
         setStyleForUnderline()
         
-        suggestionContentActive.classList.remove('suggestion-content--active')
-        suggestionContentItems[index].classList.add('suggestion-content--active')
+        suggestionContentActive.classList.remove('suggestion__content--active')
+        suggestionContentItems[index].classList.add('suggestion__content--active')
     }
 })
 
 
 // Render quantity of product saled
-const quantityProductSaledList = $$('.body__suggestion-today .product-saled')
+const quantityProductSaledList = $$('.suggestion .product__saled')
 quantityProductSaledList.forEach(quantity => {
     let quantityTypeNumber = parseInt(quantity.innerText)
     if ( quantityTypeNumber > 0) {
